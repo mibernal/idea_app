@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detalle de Idea{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>{{ idea.title }}</h1>
+  <p>{{ idea.description }}</p>
+  <img src="{{ idea.image.url }}" alt="{{ idea.title }}" class="img-fluid">
+  <a href="{% url 'idea_edit' idea.pk %}" class="btn btn-primary">Editar</a>
+  <a href="{% url 'idea_delete' idea.pk %}" class="btn btn-danger">Eliminar</a>
+</div>
+{% endblock %}

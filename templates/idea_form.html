@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% if request.resolver_match.url_name == 'idea_create' %}Crear Nueva Idea{% else %}Editar Idea{% endif %}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>{% if request.resolver_match.url_name == 'idea_create' %}Crear Nueva Idea{% else %}Editar Idea{% endif %}</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+  <a href="{% url 'idea_list' %}" class="btn btn-secondary">Volver a la Lista de Ideas</a>
+</div>
+{% endblock %}
