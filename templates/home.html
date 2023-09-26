@@ -1,21 +1,29 @@
+<!-- home.html -->
 <!DOCTYPE html>
-
 {% load static %}
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Site{% endblock %}</title>
+    <title>{% block title %}Mi Sitio de Ideas{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>My Awesome Site</h1>
+        <h1>Ideas de Desarrollo de Software</h1>
         <nav>
             <ul>
                 <li><a href="{% url 'idea_list' %}">Lista de Ideas</a></li>
                 <!-- Agrega más enlaces de navegación según sea necesario -->
+                
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'idea_create' %}">Nueva Idea</a></li>
+                <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'signup' %}">Registrarse</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
@@ -25,7 +33,7 @@
     </main>
     
     <footer>
-        &copy; {{ year }} My Awesome Site
+        &copy; {{ year }} Mi Sitio de Ideas
     </footer>
 </body>
 </html>
