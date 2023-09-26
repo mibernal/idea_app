@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Sitio de Ideas{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -15,8 +17,6 @@
         <nav>
             <ul>
                 <li><a href="{% url 'idea_list' %}">Lista de Ideas</a></li>
-                <!-- Agrega más enlaces de navegación según sea necesario -->
-                
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'idea_create' %}">Nueva Idea</a></li>
                 <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
@@ -27,11 +27,9 @@
             </ul>
         </nav>
     </header>
-    
     <main>
         {% block content %}{% endblock %}
     </main>
-    
     <footer>
         &copy; {{ year }} Mi Sitio de Ideas
     </footer>
